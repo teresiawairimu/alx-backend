@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Class that inherits from BaseCaching"""
 
+from base_caching import BaseCaching
+
 
 class BasicCache(BaseCaching):
     """Inherits from BaseCaching and is a caching system
@@ -23,7 +25,7 @@ class BasicCache(BaseCaching):
             item: the item to be stored in the cache.
         """
         if key is not None and item is not None:
-            self.cache_date[key] = item
+            self.cache_data[key] = item
 
     def get(self, key):
         """Retrieves an item from the cache by key
