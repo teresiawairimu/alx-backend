@@ -48,7 +48,7 @@ class LRUCache(BaseCaching):
             Item associated with key,
             Or None if key is None
         """
-        if key is not None:
-            return self.cache_data.get(key)
-        else:
-            return None
+        if key is not None and key in self.cache_data:
+            self.cache_data.move_to_end(key)
+            return self.cache_data[key]
+        return None
