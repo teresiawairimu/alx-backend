@@ -4,12 +4,13 @@
 from collections import OrderedDict
 from base_caching import BaseCaching
 
+
 class MRUCache(BaseCaching):
     """Inherits from BaseCaching and uses MRU algorithm
     Methods:
         put(key, item):
             Adds an item to the cache_data
-            most recently used item is discarded 
+            most recently used item is discarded
             when cache_data's length exceeds MAX_ITEMS
         get(key):
             Retrieves the value associated with the key
