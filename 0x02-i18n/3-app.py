@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Create a get_locale function with babel.localeselector
-   decorator.
+"""Use _ or gettext function to parametrize templates.
+   Use message IDs home_title and home_header.
 """
 from flask import Flask, request, render_template
-from flask_babel import Babel
+from flask_babel import Babel, _
 from config import Config
 
 app = Flask(__name__)
@@ -21,7 +21,7 @@ def get_locale():
 
 @app.route('/')
 def home():
-    return render_template('2-index.html')
+    return render_template('3-index.html')
 
 
 if __name__ == '__main__':
