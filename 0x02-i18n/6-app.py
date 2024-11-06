@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Mock a database user table. Define a get_user function
-   that returns a user dictionary or None if ID cannot be found
+"""Change the get_locale function to use a user's
+   preferred local if it is supported
 """
 from flask import Flask, request, render_template, g
 from flask_babel import Babel, _
@@ -37,15 +37,20 @@ def get_locale():
     """Match client's preferred language with
        supported languages.
     """
+    locale = request.args.get('locale')
+    if locale in app.config['LANGUAGES']:
+        return locale
+
     user = g.get('user')
     if user and user['locale'] in app.config['LANGUAGES']:
         return user['locale']
+
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/')
 def home():
-    return render_template('5-index.html')
+    return render_template('6-index.html')
 
 
 if __name__ == '__main__':
